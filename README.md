@@ -1,7 +1,6 @@
 # THE LITTLE TABLE CO.
 
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
-![License](https://img.shields.io/badge/license-MIT-blue)
 ![Version](https://img.shields.io/badge/version-1.0.0-brightgreen)
 
 **Course:** Web Development(Introduction)  
