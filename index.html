@@ -1,119 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Little Table Co. - Children's event planning and catering services.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The Little Table Co. - Children's event planning and catering services."
+    />
+    <link rel="stylesheet" href="Styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>The Little Table Co. | Home</title>
-</head>
-<body>
-    <header>
-        <h1>The Little Table Co.</h1>
-        <p>Children's Event Planning and Catering</p>
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html" aria-current="page">Home</a></li>
-                <li><a href="pages/about.html">About</a></li>
-                <li><a href="pages/packages.html">Packages</a></li>
-                <li><a href="pages/templates.html">Templates</a></li>
-                <li><a href="pages/enquire.html">Enquire</a></li>
-                <li><a href="pages/contact.html">Contact</a></li>
-                <li><a href="pages/enquire.html">Enquire now</a></li>
-            </ul>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-content">
+        <div class="brand">
+          <img
+            src="Assets/images/Logo.png"
+            alt="The Little Table Co. logo"
+            class="brand-logo"
+          />
+          <p class="brand-tagline">Children's Event Planning and Catering</p>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li>
+              <a href="index.html" aria-current="page">Home</a>
+            </li>
+
+            <li>
+              <a href="Pages/about.html">About</a>
+            </li>
+
+            <li>
+              <a href="Pages/packages.html">Packages</a>
+            </li>
+
+            <li>
+              <a href="Pages/templates.html">Templates</a>
+            </li>
+
+            <li>
+              <a href="Pages/enquire.html">Enquire</a>
+            </li>
+
+            <li>
+              <a href="Pages/contact.html">Contact</a>
+            </li>
+
+            <li>
+              <a href="Pages/enquire.html" class="btn btn-primary">
+                Enquire Now
+              </a>
+            </li>
+          </ul>
         </nav>
+      </div>
     </header>
 
     <main>
-        <section class = "hero">
-            <h2>Make Every Celebration Memorable</h2>
-            <p>The Little Table Co. provides creative, organised and convenient children's event planning and catering packages for birthdays and small celebrations.</p>
-            <p><a href="pages/enquire.html">Plan Your Party</a></p>
-            <p><a href="pages/packages.html">View Our packages</a></p>
-            <figure>
-                <img src="images/hero.jpg" alt="Placeholder for a children's themed party event photograph">
-            </figure>
-        </section>
+      <!--HERO -->
+      <section class="hero" id="home-hero">
+        <div class="hero-content">
+          <h2 class="hero-title">Make Every Celebration Memorable</h2>
 
-        <section>
-            <h2>What We Offer</h2>
-            <p>Our services combine catering, decorations, entertainment and event setup into convenient event packages.</p>
-            <ul>
-                <li>Children's birthday party planning</li>
-                <li>Themed decorations</li>
-                <li>Catering options</li>
-                <li>Entertainment and party games</li>
-                <li>Event setup</li>
-                <li>Pre-planned event concepts</li>
-            </ul>
-        </section>
+          <p class="hero-text">
+            The Little Table Co. provides creative, organised and convenient
+            children's event planning and catering packages for birthdays and
+            small celebrations.
+          </p>
 
-        <section class = "featured-packages">
-            <h2>Featured Packages</h2>
-            <article class = "package-card">
-                <h3>Mini Celebration</h3>
-                <p>Suitable for smaller gatherings.</p>
-                <figure>
-                    <img src="images/mini-package.jpg" alt="Placeholder for a small children's party package">
-                </figure>
-                <p>Price: R2,500</p>
-                <p><a href="packages.html">Learn More</a></p>
+          <div class="hero-actions">
+            <a href="Pages/enquire.html" class="btn btn-primary">
+              Plan Your Party
+            </a>
+
+            <a href="Pages/packages.html" class="btn btn-secondary">
+              View Our Packages
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero-image">
+          <img
+            src="Assets/images/hero_Image.jpeg"
+            alt="Children's themed party event"
+          />
+        </figure>
+      </section>
+
+      <!--WHAT WE OFFER -->
+      <section class="section offer-section" id="what-we-offer">
+        <div class="section-content">
+          <h2 class="section-title">What We Offer</h2>
+
+          <p class="section-intro">
+            Our services combine catering, decorations, entertainment and event
+            setup into convenient event packages.
+          </p>
+
+          <ul class="offer-list">
+            <li>Children's birthday party planning</li>
+            <li>Themed decorations</li>
+            <li>Catering options</li>
+            <li>Entertainment and party games</li>
+            <li>Event setup</li>
+            <li>Pre-planned event concepts</li>
+          </ul>
+        </div>
+      </section>
+
+      <!--FEATURED PACKAGES -->
+      <section class="section featured-packages" id="featured-packages">
+        <div class="section-content">
+          <h2 class="section-title">Featured Packages</h2>
+
+          <div class="package-grid">
+            <!-- MINI -->
+            <article class="package-card">
+              <figure class="package-image">
+                <img
+                  src="Assets/images/mini_Package.jpeg"
+                  alt="Small children's party package"
+                />
+              </figure>
+
+              <div class="package-content">
+                <h3 class="package-title">Mini Celebration</h3>
+
+                <p class="package-description">
+                  A simple and charming celebration package designed for smaller
+                  gatherings, providing essential décor and party setup for a
+                  fun and memorable event.
+                </p>
+
+                <p class="package-price">Price: R2,500</p>
+
+                <a href="Pages/packages.html" class="btn btn-secondary">
+                  Learn More
+                </a>
+              </div>
             </article>
-            <article class = "package-card">
-                <h3>Classic Celebration</h3>
-                <p>A more complete package including catering and themed décor.</p>
-                <figure>
-                    <img src="images/classic-package.jpg" alt="Placeholder for a classic children's party package">
-                </figure>
-                <p>Price: R4,500</p>
-                <p><a href="packages.html">Learn More</a></p>
+
+            <!-- CLASSIC -->
+            <article class="package-card">
+              <figure class="package-image">
+                <img
+                  src="Assets/images/classic_Package.jpeg"
+                  alt="Classic children's party package"
+                />
+              </figure>
+
+              <div class="package-content">
+                <h3 class="package-title">Classic Celebration</h3>
+
+                <p class="package-description">
+                  A complete celebration package combining themed décor,
+                  catering and coordinated table styling to create a fun and
+                  beautifully organised event.
+                </p>
+
+                <p class="package-price">Price: R4,500</p>
+
+                <a href="Pages/packages.html" class="btn btn-secondary">
+                  Learn More
+                </a>
+              </div>
             </article>
-            <article class = "package-card">
-                <h3>Ultimate Celebration</h3>
-                <p>A premium package including additional entertainment, décor and event services.</p>
-                <figure>
-                    <img src="images/ultimate-package.jpg" alt="Placeholder for a premium children's party package">
-                </figure>
-                <p>Price: R8,500</p>
-                <p><a href="packages.html">Learn More</a></p>
+
+            <!-- ULTIMATE -->
+            <article class="package-card">
+              <figure class="package-image">
+                <img
+                  src="Assets/images/ultimate_Package.jpeg"
+                  alt="Premium children's party package"
+                />
+              </figure>
+
+              <div class="package-content">
+                <h3 class="package-title">Ultimate Celebration</h3>
+
+                <p class="package-description">
+                  A premium, fully coordinated celebration combining detailed
+                  themed décor, catering and entertainment for a complete party
+                  experience.
+                </p>
+
+                <p class="package-price">Price: R8,500</p>
+
+                <a href="Pages/packages.html" class="btn btn-secondary">
+                  Learn More
+                </a>
+              </div>
             </article>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class = "trending-themes">
-            <h2>Trending Event Themes</h2>
-            <ul>
-                <li><a href="pages/themes.html#princess">Princess</a></li>
-                <li><a href="pages/themes.html#superhero">Superhero</a></li>
-                <li><a href="pages/themes.html#football">Football</a></li>
-                <li><a href="pages/themes.html#space">Space</a></li>
-                <li><a href="pages/themes.html#gaming">Gaming</a></li>
-                <li><a href="pages/themes.html#jungle">Jungle</a></li>
-            </ul>
-        </section>
+      <!-- TRENDING THEMES -->
+      <section class="section trending-themes" id="trending-themes">
+        <div class="section-content">
+          <h2 class="section-title">Trending Event Themes</h2>
 
-        <section>
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li>Creative themed celebrations</li>
-                <li>Convenient event packages</li>
-                <li>Options for different ages and budgets</li>
-                <li>Event planning and setup support</li>
-                <li>A simple enquiry process</li>
-            </ul>
-        </section>
+          <div class="theme-grid">
+            <article class="theme-card">
+              <a href="Pages/templates.html#princess">
+                <figure class="theme-image">
+                  <img
+                    src="Assets/images/princess.jpeg"
+                    alt="Princess themed children's party"
+                  />
+                </figure>
 
-        <section>
-            <h2>Ready to Plan?</h2>
-            <p>Tell us about your event requirements and we will follow up with more information and a personalised quotation.</p>
-            <p><a href="enquire.html">Enquire now</a></p>
-        </section>
+                <h3>Princess</h3>
+              </a>
+            </article>
+
+            <article class="theme-card">
+              <a href="Pages/templates.html#superhero">
+                <figure class="theme-image">
+                  <img
+                    src="Assets/images/superhero.jpeg"
+                    alt="Superhero themed children's party"
+                  />
+                </figure>
+
+                <h3>Superhero</h3>
+              </a>
+            </article>
+
+            <article class="theme-card">
+              <a href="Pages/templates.html#football">
+                <figure class="theme-image">
+                  <img
+                    src="Assets/images/football.jpeg"
+                    alt="Football themed children's party"
+                  />
+                </figure>
+
+                <h3>Football</h3>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="section why-us" id="why-choose-us">
+        <div class="section-content">
+          <h2 class="section-title">Why Choose Us?</h2>
+
+          <p class="section-intro">
+            We make children's celebrations easier to plan, more enjoyable to
+            experience and memorable for everyone involved.
+          </p>
+
+          <div class="benefits-grid">
+            <article class="benefit-card">
+              <h3>Convenient Packages</h3>
+              <p>
+                Our packages bring key event services together, making the
+                planning process simpler for parents and organisers.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <h3>Flexible Options</h3>
+              <p>
+                Choose options that suit different ages, preferences and event
+                budgets.
+              </p>
+            </article>
+
+            <article class="benefit-card">
+              <h3>Event Support</h3>
+              <p>
+                From planning to setup, we help coordinate the details needed to
+                bring the event together.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section" id="ready-to-plan">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Plan Your Celebration?</h2>
+
+          <p class="cta-text">
+            Tell us about your event requirements and we will follow up with
+            more information and a personalised quotation.
+          </p>
+
+          <a href="Pages/enquire.html" class="btn btn-primary"> Enquire Now </a>
+        </div>
+      </section>
     </main>
+  </body>
 
-   <footer>
-      <p>&copy; 2026 The Little Table Co. All rights reserved.</p>
-      <address>
-        Email: <a href="mailto:enquire@thelittletableco.com">enquire@thelittletableco.com</a><br />
-        Phone: <a href="tel:0000000000">000 000 0000</a><br />
+  <!--FOOTER-->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="copyright">
+        &copy; 2026 The Little Table Co. All rights reserved.
+      </p>
+
+      <address class="contact-details">
+        Email:
+        <a href="mailto:enquire@thelittletableco.com">
+          enquire@thelittletableco.com
+        </a>
+
+        <br />
+
+        Phone:
+        <a href="tel:0000000000"> 000 000 0000 </a>
       </address>
-    </footer>
-</body>
+    </div>
+  </footer>
 </html>
