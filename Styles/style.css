@@ -1,0 +1,104 @@
+/* ==============================
+   LITTLE TABLE CO.
+   Global Styles
+================================= */
+
+:root {
+    --berry: #9E4A7C;
+    --rose: #D88EA9;
+    --gold: #A89F38;
+    --pink: #FDC0FC;
+    --dark: #22201B;
+
+    --white: #FFFAF7;
+    --light: #F8F1EC;
+    --border: #E6D8D0;
+}
+
+/* ==============================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--berry);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark);
+}
+
+.btn-secondary {
+    border: 2px solid var(--berry);
+    color: var(--berry);
+    background-color: transparent;
+}
+
+.btn-secondary:hover {
+    background-color: var(--berry);
+    color: var(--white);
+}
