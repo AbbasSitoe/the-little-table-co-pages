@@ -185,4 +185,210 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // =========================================
+  // PACKAGE SERVICES ACCORDION
+  // =========================================
+
+  const packageDetails = document.querySelectorAll(
+    ".full-package-card .package-detail",
+  );
+
+  packageDetails.forEach((detail, index) => {
+    const heading = detail.querySelector("h4");
+    const list = detail.querySelector("ul");
+
+    // Only make the "Services Included" section expandable.
+    if (
+      !heading ||
+      heading.textContent.trim().toLowerCase() !== "services included" ||
+      !list
+    ) {
+      return;
+    }
+
+    const button = document.createElement("button");
+    const panel = document.createElement("div");
+
+    const panelId = `package-services-${index + 1}`;
+
+    button.className = "package-accordion-trigger";
+    button.type = "button";
+    button.textContent = "Services Included";
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", panelId);
+
+    panel.className = "package-accordion-panel";
+    panel.id = panelId;
+    panel.setAttribute("aria-hidden", "true");
+
+    // Move the existing list into the accordion panel.
+    heading.replaceWith(button);
+    panel.appendChild(list);
+    detail.appendChild(panel);
+
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      button.setAttribute("aria-expanded", String(!isExpanded));
+      panel.setAttribute("aria-hidden", String(isExpanded));
+
+      if (isExpanded) {
+        panel.classList.remove("is-open");
+        panel.style.maxHeight = "0";
+      } else {
+        panel.classList.add("is-open");
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+      }
+    });
+  });
+
+  // =========================================
+  // SUBTLE SCROLL REVEAL ANIMATIONS
+  // =========================================
+
+  const revealElements = document.querySelectorAll(
+    ".full-package-card, .custom-package-content",
+  );
+
+  if (
+    "IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      },
+    );
+
+    revealElements.forEach((element) => {
+      element.classList.add("scroll-reveal");
+      revealObserver.observe(element);
+    });
+  }
+
+  // =========================================
+  // JOHANNESBURG INTERACTIVE MAP
+  // =========================================
+
+  const mapElement = document.getElementById("service-area-map");
+
+  if (mapElement && typeof L !== "undefined") {
+    // Approximate centre of Johannesburg
+    const johannesburg = [-26.2041, 28.0473];
+
+    const map = L.map("service-area-map").setView(johannesburg, 11);
+
+    // Load OpenStreetMap tiles
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // General service area marker
+    const marker = L.marker(johannesburg).addTo(map);
+
+    marker.bindPopup(`
+            <strong>The Little Table Co.</strong><br>
+            Johannesburg Service Area<br>
+            Children's Event Planning and Catering
+        `);
+
+    // Approximate coverage area, not an exact boundary
+    L.circle(johannesburg, {
+      color: "#9E4A7C",
+      fillColor: "#D88EA9",
+      fillOpacity: 0.15,
+      radius: 10000,
+      weight: 2,
+    }).addTo(map);
+
+    marker.openPopup();
+  }
+
+  // =========================================
+  // CONTACT FORM AJAX SUBMISSION
+  // =========================================
+
+  const contactForm = document.getElementById("contactForm");
+  const contactFormStatus = document.getElementById("contactFormStatus");
+
+  if (contactForm && contactFormStatus) {
+    contactForm.addEventListener("submit", async (event) => {
+      // Prevent the normal page redirect.
+      event.preventDefault();
+
+      // Check browser validation.
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      // Find the submit button.
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+
+      // Save the original button text.
+      const originalButtonText = submitButton.textContent;
+
+      // Show loading state.
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+
+      contactFormStatus.textContent = "Sending your message...";
+      contactFormStatus.className = "form-status";
+
+      try {
+        // FormSubmit AJAX endpoint.
+        const formAction = contactForm.action.replace(
+          "https://formsubmit.co/",
+          "https://formsubmit.co/ajax/",
+        );
+
+        // Send the form data.
+        const response = await fetch(formAction, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        // Read FormSubmit response.
+        const result = await response.json();
+
+        // Check whether submission succeeded.
+        if (response.ok && result.success === "true") {
+          contactFormStatus.textContent =
+            "Thank you! Your message has been sent successfully.";
+
+          contactFormStatus.className = "form-status form-status-success";
+
+          // Clear the form.
+          contactForm.reset();
+        } else {
+          throw new Error(result.message || "Unable to send your message.");
+        }
+      } catch (error) {
+        console.error("Contact form error:", error);
+
+        contactFormStatus.textContent =
+          "Sorry, your message could not be sent. Please try again.";
+
+        contactFormStatus.className = "form-status form-status-error";
+      } finally {
+        // Restore the button.
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  }
 });
