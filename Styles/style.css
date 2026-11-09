@@ -1165,6 +1165,73 @@ p {
    TEMPLATE CONTENT
 ========================= */
 
+/* =========================================
+   TEMPLATE SEARCH, FILTER AND SORT
+========================================= */
+
+.template-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 25px 0 12px;
+  align-items: center;
+}
+
+.template-controls input,
+.template-controls select {
+  flex: 1;
+  min-width: 180px;
+  padding: 13px 15px;
+  border: 1px solid #e6d8d0;
+  border-radius: 8px;
+  background-color: #fffaf7;
+  color: #22201b;
+  font-family: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.template-controls input:focus,
+.template-controls select:focus {
+  outline: none;
+  border-color: #9e4a7c;
+  box-shadow: 0 0 0 3px rgba(158, 74, 124, 0.12);
+}
+
+#templateCount {
+  color: #22201b;
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+#noTemplatesMessage {
+  padding: 25px;
+  text-align: center;
+  color: #9e4a7c;
+  background-color: #f8f1ec;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+#noTemplatesMessage[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .template-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .template-controls input,
+  .template-controls select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 .template-content {
   padding: 28px;
 }

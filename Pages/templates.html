@@ -15,6 +15,7 @@
     />
 
     <link rel="stylesheet" href="../Styles/style.css" />
+    <script src="../Scripts/main.js" defer></script>
     <link
       rel="icon"
       type="image/x-icon"
@@ -124,7 +125,34 @@
               preferences, age and celebration.
             </p>
           </div>
+          <div class="template-controls">
+            <input
+              type="search"
+              id="templateSearch"
+              placeholder="Search themes..."
+              aria-label="Search templates"
+            />
 
+            <select id="categoryFilter" aria-label="Filter by category">
+              <option value="all">All Categories</option>
+              <option value="adventure">Adventure Theme</option>
+              <option value="magical">Magical Theme</option>
+              <option value="action">Action Theme</option>
+              <option value="exploration">Exploration Theme</option>
+              <option value="sports">Sports Theme</option>
+              <option value="wild">Wild Adventure</option>
+            </select>
+
+            <select id="templateSort" aria-label="Sort templates">
+              <option value="az">Name: A–Z</option>
+              <option value="za">Name: Z–A</option>
+            </select>
+          </div>
+
+          <p id="templateCount" aria-live="polite"></p>
+          <p id="noTemplatesMessage" hidden>
+            No templates match your search. Try another keyword or category.
+          </p>
           <!-- TEMPLATE GRID -->
 
           <div class="template-grid">
@@ -318,7 +346,7 @@
             <article class="template-card" id="jungle">
               <figure class="template-image">
                 <img
-                  src="../Assets/images/safari.jpeg"
+                  src="../Assets/images/jungle.jpg"
                   alt="Jungle themed children's party setup"
                 />
               </figure>
