@@ -92,4 +92,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filterAndSortTemplates();
   }
+
+  // =========================================
+  // TEMPLATE IMAGE LIGHTBOX
+  // =========================================
+
+  const templateImages = Array.from(
+    document.querySelectorAll(".template-card img"),
+  );
+
+  if (templateImages.length > 0) {
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("aria-label", "Template image gallery");
+
+    lightbox.innerHTML = `
+            <button class="lightbox-close" aria-label="Close gallery">&times;</button>
+            <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+            <img class="lightbox-image" src="" alt="">
+            <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+            <p class="lightbox-caption"></p>
+        `;
+
+    document.body.appendChild(lightbox);
+
+    const lightboxImage = lightbox.querySelector(".lightbox-image");
+    const caption = lightbox.querySelector(".lightbox-caption");
+    const closeButton = lightbox.querySelector(".lightbox-close");
+    const previousButton = lightbox.querySelector(".lightbox-prev");
+    const nextButton = lightbox.querySelector(".lightbox-next");
+
+    let currentImageIndex = 0;
+
+    function showImage(index) {
+      currentImageIndex =
+        (index + templateImages.length) % templateImages.length;
+
+      const selectedImage = templateImages[currentImageIndex];
+
+      lightboxImage.src = selectedImage.src;
+      lightboxImage.alt = selectedImage.alt || "Template preview";
+
+      caption.textContent = `${currentImageIndex + 1} of ${templateImages.length}`;
+    }
+
+    function openLightbox(index) {
+      showImage(index);
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    templateImages.forEach((image, index) => {
+      image.addEventListener("click", (event) => {
+        event.preventDefault();
+        openLightbox(index);
+      });
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+
+    previousButton.addEventListener("click", () => {
+      showImage(currentImageIndex - 1);
+    });
+
+    nextButton.addEventListener("click", () => {
+      showImage(currentImageIndex + 1);
+    });
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("active")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") {
+        showImage(currentImageIndex - 1);
+      }
+      if (event.key === "ArrowRight") {
+        showImage(currentImageIndex + 1);
+      }
+    });
+  }
 });
