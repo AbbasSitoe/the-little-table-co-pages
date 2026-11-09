@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://MY-DOMAIN/</loc>
+    </url>
+
+    <url>
+        <loc>https://MY-DOMAIN/Pages/about.html</loc>
+    </url>
+
+    <url>
+        <loc>https://MY-DOMAIN/Pages/packages.html</loc>
+    </url>
+
+    <url>
+        <loc>https://MY-DOMAIN/Pages/templates.html</loc>
+    </url>
+
+    <url>
+        <loc>https://MY-DOMAIN/Pages/enquire.html</loc>
+    </url>
+
+    <url>
+        <loc>https://MY-DOMAIN/Pages/contact.html</loc>
+    </url>
+
+</urlset>
+
+<!-- THIS IS A REPRESENTATION OF MY UNDERSTANDING OF HOW MY SITEMAP SHOULD BE LIKE, I WILL NOT BE PUBICLY PUBLISHING THE WEBSITE BEING SO I WILL NOT INVENT URLS-->
