@@ -858,6 +858,121 @@ p {
   margin-top: 15px;
 }
 
+/* =========================================
+   PACKAGE SERVICES ACCORDION
+========================================= */
+
+.package-accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid #e6d8d0;
+  background: transparent;
+  color: #9e4a7c;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.package-accordion-trigger::after {
+  content: "+";
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.package-accordion-trigger[aria-expanded="true"]::after {
+  content: "−";
+}
+
+.package-accordion-trigger:focus-visible {
+  outline: 2px solid #9e4a7c;
+  outline-offset: 4px;
+}
+
+.package-accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease;
+}
+
+.package-accordion-panel.is-open {
+  opacity: 1;
+}
+
+.package-accordion-panel ul {
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+/* Subtle package card hover animation */
+
+.full-package-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.full-package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(34, 32, 27, 0.1);
+}
+
+.full-package-image img {
+  transition: transform 0.4s ease;
+}
+
+.full-package-card:hover .full-package-image img {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .package-accordion-trigger::after,
+  .package-accordion-panel,
+  .full-package-card,
+  .full-package-image img {
+    transition: none;
+  }
+
+  .full-package-card:hover {
+    transform: none;
+  }
+
+  .full-package-card:hover .full-package-image img {
+    transform: none;
+  }
+}
+
+/* Scroll reveal animation */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* =========================
    PACKAGE GRID
 ========================= */
@@ -1165,6 +1280,73 @@ p {
    TEMPLATE CONTENT
 ========================= */
 
+/* =========================================
+   TEMPLATE SEARCH, FILTER AND SORT
+========================================= */
+
+.template-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 25px 0 12px;
+  align-items: center;
+}
+
+.template-controls input,
+.template-controls select {
+  flex: 1;
+  min-width: 180px;
+  padding: 13px 15px;
+  border: 1px solid #e6d8d0;
+  border-radius: 8px;
+  background-color: #fffaf7;
+  color: #22201b;
+  font-family: inherit;
+  font-size: 14px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.template-controls input:focus,
+.template-controls select:focus {
+  outline: none;
+  border-color: #9e4a7c;
+  box-shadow: 0 0 0 3px rgba(158, 74, 124, 0.12);
+}
+
+#templateCount {
+  color: #22201b;
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+#noTemplatesMessage {
+  padding: 25px;
+  text-align: center;
+  color: #9e4a7c;
+  background-color: #f8f1ec;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+#noTemplatesMessage[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .template-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .template-controls input,
+  .template-controls select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 .template-content {
   padding: 28px;
 }
@@ -1195,6 +1377,97 @@ p {
   line-height: 1.7;
 
   margin-bottom: 22px;
+}
+
+/* =========================================
+   TEMPLATE IMAGE LIGHTBOX
+========================================= */
+
+.template-card img {
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(34, 32, 27, 0.92);
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: 85%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  border: none;
+  background: #fffaf7;
+  color: #22201b;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: #d88ea9;
+}
+
+.lightbox-close {
+  top: 25px;
+  right: 25px;
+}
+
+.lightbox-prev {
+  left: 25px;
+}
+
+.lightbox-next {
+  right: 25px;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 20px;
+  color: #fffaf7;
+  text-align: center;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .lightbox-image {
+    max-width: 95%;
+    max-height: 70vh;
+  }
+
+  .lightbox-prev {
+    left: 8px;
+  }
+
+  .lightbox-next {
+    right: 8px;
+  }
 }
 
 .template-content h4 {
@@ -1596,6 +1869,40 @@ p {
   font-size: 0.9rem;
 }
 
+/* =========================================
+   JOHANNESBURG SERVICE AREA MAP
+========================================= */
+
+.map-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 30px auto 15px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid #e6d8d0;
+  box-shadow: 0 8px 25px rgba(34, 32, 27, 0.08);
+}
+
+#service-area-map {
+  width: 100%;
+  height: 430px;
+  z-index: 1;
+}
+
+.map-note {
+  max-width: 1100px;
+  margin: 12px auto 0;
+  color: #666;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #service-area-map {
+    height: 320px;
+  }
+}
+
 /* =========================
    SOCIAL MEDIA
 ========================= */
@@ -1760,6 +2067,31 @@ p {
 /* =========================
    CONTACT FORM
 ========================= */
+
+/* =========================================
+   CONTACT FORM STATUS
+   ========================================= */
+
+.form-status {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.form-status-success {
+  color: #176b68;
+  font-weight: 600;
+}
+
+.form-status-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.contact-form button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
 
 .contact-form-section {
   background-color: var(--white);
